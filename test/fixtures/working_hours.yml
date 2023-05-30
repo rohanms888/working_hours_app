@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  professional: one
+  day: MyString
+  start_time: 2023-05-30 09:47:28
+  end_time: 2023-05-30 09:47:28
+
+two:
+  professional: two
+  day: MyString
+  start_time: 2023-05-30 09:47:28
+  end_time: 2023-05-30 09:47:28

@@ -1,0 +1,44 @@
+<%= form_with(model: professional) do |form| %>
+  <% if professional.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(professional.errors.count, 'error') %> prohibited this professional from being saved:</h2>
+
+      <ul>
+        <% professional.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <%= form.fields_for :working_hours do |working_hour_form| %>
+    <div class="field">
+      <%= working_hour_form.label :day %>
+      <%= working_hour_form.text_field :day %>
+    </div>
+
+    <div class="field">
+      <%= working_hour_form.label :start_time %>
+      <%= working_hour_form.time_field :start_time, value: Time.now.strftime('%H:%M') %>
+    </div>
+
+    <div class="field">
+      <%= working_hour_form.label :end_time %>
+      <%= working_hour_form.time_field :end_time, value: Time.now.strftime('%H:%M') %>
+    </div>
+
+    <% unless working_hour_form.object.new_record? %>
+      <%= working_hour_form.check_box :_destroy %>
+      <%= working_hour_form.label :_destroy, 'Remove' %>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
